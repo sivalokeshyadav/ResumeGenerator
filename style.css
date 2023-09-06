@@ -1,0 +1,26 @@
+/*#cv-form{
+    display: ;
+}*/
+
+*{
+    color: white;
+}
+
+.myimg{
+    /*border: 1px solid red;*/
+    border-radius: 50%;
+    width: 200px;
+    height: 250px;
+    
+    cursor: pointer;
+}
+
+
+.background{
+    background-color: #5b8f8f;
+    
+}
+
+.card-body {
+    color: black;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Photo from Computer</title>
+    <style>
+        /* Style for the button */
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        /* Style for the displayed image */
+        img {
+            max-width: 100%;
+            max-height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to trigger photo insertion -->
+    <button id="uploadButton">Upload Photo</button>
+
+    <!-- Input field to select a file -->
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+
+    <!-- Displayed image -->
+    <img id="displayedImage" alt="Uploaded Photo">
+
+    <script>
+        // JavaScript to handle the button click event
+        const uploadButton = document.getElementById("uploadButton");
+        const fileInput = document.getElementById("fileInput");
+        const displayedImage = document.getElementById("displayedImage");
+
+        // Function to handle file selection
+        function handleFileSelection(event) {
+            const selectedFile = event.target.files[0];
+
+            if (selectedFile) {
+                // Create a FileReader to read the selected file
+                const reader = new FileReader();
+
+                // Define a function to run when the file is loaded
+                reader.onload = function () {
+                    // Set the source (URL) of the displayed image
+                    displayedImage.src = reader.result;
+                };
+
+                // Read the selected file as a data URL
+                reader.readAsDataURL(selectedFile);
+            }
+        }
+
+        // Attach the handleFileSelection function to the file input's change event
+        fileInput.addEventListener("change", handleFileSelection);
+
+        // Attach a click event to the button to trigger the file input
+        uploadButton.addEventListener("click", function () {
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>
